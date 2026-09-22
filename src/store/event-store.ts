@@ -101,6 +101,7 @@ export class EventStore {
     const daysBack = this.config.days_back ?? DEFAULT_CONFIG.days_back ?? 7;
     const end = new Date();
     const start = new Date(end.getTime() - daysBack * 24 * 60 * 60 * 1000);
+    start.setHours(0, 0, 0, 0);
     const range: TimeRange = { start, end };
 
     const results = await Promise.allSettled(
